@@ -373,7 +373,7 @@ public abstract class Binding {
     public static class ThrowableBindingParser implements BindingParser {
         @Override
         public Binding parse(Annotation annotation) {
-            return new ThrowableBinding();
+            return new ThrowableBinding(); // 创建@Bind中参数指定的解析器
         }
         
     }

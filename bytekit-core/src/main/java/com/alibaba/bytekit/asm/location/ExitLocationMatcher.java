@@ -18,7 +18,7 @@ public class ExitLocationMatcher implements LocationMatcher {
         AbstractInsnNode insnNode = methodProcessor.getEnterInsnNode();
 
         while (insnNode != null) {
-            if (insnNode instanceof InsnNode) {
+            if (insnNode instanceof InsnNode) { // 表示零操作数指令的节点
                 InsnNode node = (InsnNode) insnNode;
                 if (matchExit(node)) {
                     LocationFilter locationFilter = methodProcessor.getLocationFilter();

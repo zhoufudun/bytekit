@@ -236,11 +236,11 @@ public class MethodProcessor {
     public TryCatchBlock initTryCatchBlock(String exception) {
         if( this.tryCatchBlock == null) {
             this.tryCatchBlock = new TryCatchBlock(methodNode, exception);
-            this.methodNode.instructions.insertBefore(this.getEnterInsnNode(), tryCatchBlock.getStartLabelNode());
-            this.methodNode.instructions.insert(this.getLastInsnNode(), tryCatchBlock.getEndLabelNode());
+            this.methodNode.instructions.insertBefore(this.getEnterInsnNode(), tryCatchBlock.getStartLabelNode()); // 方法前后插入相关的try ccatch代码块
+            this.methodNode.instructions.insert(this.getLastInsnNode(), tryCatchBlock.getEndLabelNode());// 方法前后插入相关的try ccatch代码块
             InsnList instructions = new InsnList();
-            AsmOpUtils.throwException(instructions);
-            this.methodNode.instructions.insert(tryCatchBlock.getEndLabelNode(), instructions);
+            AsmOpUtils.throwException(instructions);// 方法前后插入相关的try ccatch代码块
+            this.methodNode.instructions.insert(tryCatchBlock.getEndLabelNode(), instructions);// 方法前后插入相关的try ccatch代码块
 
             tryCatchBlock.sort();
         }

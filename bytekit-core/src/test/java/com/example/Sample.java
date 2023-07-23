@@ -28,4 +28,10 @@ public class Sample {
             return 0;
         }
     }
+
+    public void test1(int a, long b, double c, String d) {
+        int var1 = a;
+        long var2 = b;
+        String var3 = d;
+    }
 }

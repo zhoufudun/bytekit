@@ -46,7 +46,7 @@ public class InterceptorProcessor {
     public List<Location> process(MethodProcessor methodProcessor) throws Exception {
         List<Location> locations = locationMatcher.match(methodProcessor);
 
-        List<Binding> interceptorBindings = interceptorMethodConfig.getBindings();
+        List<Binding> interceptorBindings = interceptorMethodConfig.getBindings(); // 获取@Bind 中的所有参数解析器
 
         for (Location location : locations) {
 

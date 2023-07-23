@@ -17,7 +17,7 @@ public class TryCatchBlock {
     public TryCatchBlock(final MethodNode methodNode) {
         this(methodNode, Type.getType(Throwable.class).getInternalName());
     }
-
+    // 创建try catch代码块
     public TryCatchBlock(final MethodNode methodNode, String exception) {
         this.methodNode = methodNode;
 

@@ -16,6 +16,7 @@ import com.alibaba.bytekit.asm.location.LocationMatcher;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @java.lang.annotation.Target(ElementType.METHOD)
+// parserHander属性指定本注解的Parser类为EnterInterceptorProcessorParser.class
 @InterceptorParserHander(parserHander = EnterInterceptorProcessorParser.class)
 public @interface AtEnter {
     boolean inline() default true;
@@ -28,11 +29,11 @@ public @interface AtEnter {
 
         @Override
         public InterceptorProcessor parse(Method method, Annotation annotationOnMethod) {
-
+            // 创建本注解的LocationMatcher实例：EnterLocationMatcher
             LocationMatcher locationMatcher = new EnterLocationMatcher();
-
             AtEnter atEnter = (AtEnter) annotationOnMethod;
 
+            // 创建 InterceptorProcessor
             return InterceptorParserUtils.createInterceptorProcessor(method,
                     locationMatcher,
                     atEnter.inline(),

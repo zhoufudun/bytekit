@@ -27,7 +27,7 @@ public class ExceptionExitLocationMatcher implements LocationMatcher {
         List<Location> locations = new ArrayList<Location>();
         TryCatchBlock tryCatchBlock = methodProcessor.initTryCatchBlock(exception);
 
-        LabelNode endLabelNode = tryCatchBlock.getEndLabelNode();
+        LabelNode endLabelNode = tryCatchBlock.getEndLabelNode(); // catch 结束位置的 Lable
 
         LocationFilter locationFilter = methodProcessor.getLocationFilter();
         if (locationFilter.allow(endLabelNode, LocationType.EXCEPTION_EXIT, false)) {

@@ -68,7 +68,7 @@ public class AsmAnnotationUtilsTest {
                 Type.getDescriptor(AdviceInfo.class), "adviceInfos");
         Assertions.assertThat(adviceInfos).containsExactly("xxxx", "yyy");
 
-        Assertions.assertThat(AsmAnnotationUtils.queryAnnotationValue(classNodeA.visibleAnnotations,
+        Assertions.assertThat((boolean[]) AsmAnnotationUtils.queryAnnotationValue(classNodeA.visibleAnnotations,
                 Type.getDescriptor(AdviceInfo.class), "notExist")).isNull();
 
         List<List<String>> allAdviceInfos = AsmAnnotationUtils.queryAnnotationValues(classNodeA.visibleAnnotations,

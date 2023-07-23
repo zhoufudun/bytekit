@@ -451,12 +451,18 @@ public class AsmOpUtils {
 
         // find out current valid local variables
         for (LocalVariableNode localVariableNode : localVariables) {
+			// 判断[start - end) 指令链表是否包含currentInsnNode 指令
             for (AbstractInsnNode iter = localVariableNode.start; iter != null
                     && (!iter.equals(localVariableNode.end)); iter = iter.getNext()) {
                 if (iter.equals(currentInsnNode)) {
                     results.add(localVariableNode);
                     break;
                 }
+//				查看ASM LocalVariableNode 类的属性，可以看到 start 为第一条可以访问此变量的指令（包含），
+//				end 为最后一条指令（不包含，即end指令不能访问此变量）：
+				/**
+				 * Start 为当前Method字节码偏移位置，Length 为变量有效的范围，Slot 为变量槽， Name为变量名，Signature为变量类型签名
+				 */
             }
         }
 
